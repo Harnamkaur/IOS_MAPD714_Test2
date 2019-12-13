@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		695C32D423A1E26100F3ADB1 /* NewWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C32D323A1E26100F3ADB1 /* NewWeightViewController.swift */; };
 		69A9023423A1B27700F71989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9023323A1B27700F71989 /* AppDelegate.swift */; };
 		69A9023623A1B27700F71989 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9023523A1B27700F71989 /* SceneDelegate.swift */; };
 		69A9023823A1B27700F71989 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9023723A1B27700F71989 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		40624A382477B2565D5CB4BE /* Pods_IOS_MAPD714_Test2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_MAPD714_Test2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		695C32D323A1E26100F3ADB1 /* NewWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWeightViewController.swift; sourceTree = "<group>"; };
 		69A9023023A1B27700F71989 /* IOS_MAPD714_Test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_MAPD714_Test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A9023323A1B27700F71989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A9023523A1B27700F71989 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				69A9024723A1B5B200F71989 /* GoogleService-Info.plist */,
 				69A9024B23A1C75C00F71989 /* BMITrackerViewController.swift */,
 				69A9024D23A1C94100F71989 /* cell.swift */,
+				695C32D323A1E26100F3ADB1 /* NewWeightViewController.swift */,
 			);
 			path = IOS_MAPD714_Test2;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				69A9024C23A1C75C00F71989 /* BMITrackerViewController.swift in Sources */,
 				69A9023823A1B27700F71989 /* ViewController.swift in Sources */,
 				69A9023423A1B27700F71989 /* AppDelegate.swift in Sources */,
+				695C32D423A1E26100F3ADB1 /* NewWeightViewController.swift in Sources */,
 				69A9024E23A1C94100F71989 /* cell.swift in Sources */,
 				69A9023623A1B27700F71989 /* SceneDelegate.swift in Sources */,
 			);

@@ -7,63 +7,78 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseFirestore
 
 class BMITrackerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
-   
+     let cellSpacingHeight: CGFloat = 5
+   var dict = [String:AnyObject]()
     @IBOutlet weak var tableView: UITableView!
+      var db:Firestore?
     
-    
-    
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-           
-           let index = dictionary[indexPath.row]
-           print("index",index)
-           
-           
-           return cell
-       }
-    
-    var db: Firestore?
     var dictionary = [[String:AnyObject]]()
-//    @IBOutlet weak var tableview: UITableView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        retrieveData()
-
-        // Do any additional setup after loading the view.
+        var inde = [String:AnyObject]()
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return dictionary.count
+        }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
     }
-    
-    func retrieveData(){
-        self.dictionary.removeAll()
-        db = Firestore.firestore()
-        db?.collection("data").getDocuments(completion: { (snap, err) in
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+             let cell = (tableView.dequeueReusableCell(withIdentifier: "cell")! as? cell)!
+            inde = dictionary[indexPath.row]
+            cell.backgroundColor = UIColor.white
+                 cell.layer.borderColor = UIColor.black.cgColor
+                 cell.layer.borderWidth = 3
+                 cell.layer.cornerRadius = 8
+                 cell.clipsToBounds = true
+            cell.nameshow.text = inde["name"] as? String
+            cell.heightshow.text = inde["height"] as! String
+            cell.weightshow.text = inde["weight"] as? String
+            cell.bmishow.text = inde["Result BMI"] as? String
+            return cell
+        }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 150
+        }
+        
 
-            for i in snap!.documents{
-                self.dictionary.append(i.data() as [String : AnyObject])
+        override func viewDidLoad() {
+            super.viewDidLoad()
+              db = Firestore.firestore()
+            retrievedata()
 
+            
+        }
+        
+        func retrievedata(){
+            var db = Firestore.firestore()
+            db.collection("data").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                         self.dictionary.append(document.data() as [String : AnyObject])
+                    }
+                    self.tableView.reloadData()
+                }
             }
-            print("dict is",self.dictionary)
 
-//            self.tableView.reloadData()
-        })
+            
+            
+        }
+
+    @IBAction func deleteall(_ sender: UIButton) {
         
-
-
-        
-    }
-    
-
-     
-    
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section:  Int) -> Int {
-        return dictionary.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
+        db?.collection("data").document("User Profile").delete() { err in
+                   if let err = err {
+                       print("Error removing document: \(err)")
+                   } else {
+                       print("Document successfully removed!")
+                   }
+               }
+}
 }
