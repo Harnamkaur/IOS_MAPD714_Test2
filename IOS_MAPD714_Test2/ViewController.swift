@@ -4,7 +4,7 @@
 //
 //  Created by Harnam kaur on 11/12/19.
 //  Copyright © 2019 Harnam kaur. All rights reserved.
-//
+//This file contain BMI calculation function and then it will stored to the firestore with the sepcific description
 
 import UIKit
 import FirebaseFirestore
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var gender: UITextField!
     @IBOutlet weak var height: UITextField!
     @IBOutlet weak var weight: UITextField!
-    @IBOutlet weak var result: UITextField!
+  
     @IBOutlet weak var metricSwitch: UISwitch!
     var db:Firestore?
       var lastCalculationType: Int?
@@ -84,19 +84,16 @@ class ViewController: UIViewController {
                                          if BMI < 16 {
                                              print("less than 16")
                                              descriptor = "Severe Thinessss"
-                                   //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
                                          }
                                          else if BMI == 16 || BMI == 17
                                          {
                                           descriptor = "Moderately Thin"
-                                    //      self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                          }
                                          else if BMI == 17 || BMI == 18
                                          {
                                           
                                            descriptor = "Mild Thiness"
-                                   //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                          }
                                          
@@ -104,21 +101,18 @@ class ViewController: UIViewController {
                                          else if BMI == 18 || BMI == 25
                                          {
                                                descriptor = "Normal"
-                                   //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                          }
                                          
                                          else if BMI == 25 || BMI == 30
                                          {
                                              descriptor = "Overweight"
-                                       //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                          }
                                          
                                          else if BMI == 30 || BMI == 35
                                          {
                                                       descriptor = "Obese class 1"
-                                       //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                          }
                                          
@@ -126,7 +120,6 @@ class ViewController: UIViewController {
                                          
                                          {
                                             descriptor = " Obese class 2"
-                                          self.result.text = "\(BMI)  \(String(describing: descriptor!))"//
 
                                           
                                          }
@@ -174,6 +167,7 @@ class ViewController: UIViewController {
                         }
                     }
                 }
+                
                 else{
                     var  data =  [
                         "name": Name,

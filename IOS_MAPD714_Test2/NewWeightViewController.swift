@@ -4,7 +4,7 @@
 //
 //  Created by Harnam kaur on 11/12/19.
 //  Copyright © 2019 Harnam kaur. All rights reserved.
-//
+// In this file hieght is fetched form the firestore which we described first time  and with new weight we perform the bmi calculation operation
 
 import UIKit
 import FirebaseFirestore
@@ -31,36 +31,38 @@ class NewWeightViewController: UIViewController {
     
     
     @IBAction func calculateagain(_ sender: Any) {
+        
+        
+        //if the unit is not metric then this function will be pefrormed
+        //and the data with new bmi is loaded to firestore
          var weigh = Double(weightNew.text!)
                 var heigh = heightNew.text!
                 if((heigh.contains("m"))){
                     heigh.removeLast()
                     print(heigh)
                     var hei = Double(heigh)
-                    var BMI = Double(weigh!/(hei!*hei!))
+                   // var BMI = Double(weigh!/(hei!*hei!))
+                     var BMI = Double(weigh!*703/(hei!*hei!))
                     let date = Date()
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd.MM.yyyy"
                     let result = formatter.string(from: date)
                     var timestamp = String(Int64(Date().timeIntervalSince1970*1000))
                      var descriptor : String?
-                                                      //
+                                                      // descritopn acording their bmi
                                                              if BMI < 16 {
                                                                  print("less than 16")
                                                                  descriptor = "Severe Thinessss"
-                                                       //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
                                                              }
                                                              else if BMI == 16 || BMI == 17
                                                              {
                                                               descriptor = "Moderately Thin"
-                                                        //      self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              else if BMI == 17 || BMI == 18
                                                              {
                                                               
                                                                descriptor = "Mild Thiness"
-                                                       //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
@@ -68,21 +70,18 @@ class NewWeightViewController: UIViewController {
                                                              else if BMI == 18 || BMI == 25
                                                              {
                                                                    descriptor = "Normal"
-                                                       //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
                                                              else if BMI == 25 || BMI == 30
                                                              {
                                                                  descriptor = "Overweight"
-                                                           //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
                                                              else if BMI == 30 || BMI == 35
                                                              {
                                                                           descriptor = "Obese class 1"
-                                                           //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
@@ -90,7 +89,6 @@ class NewWeightViewController: UIViewController {
                                                              
                                                              {
                                                                 descriptor = " Obese class 2"
-                                                           //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"//
 
                                                               
                                                              }
@@ -127,35 +125,36 @@ class NewWeightViewController: UIViewController {
                         
                     }
                 }
+                    
+                    //if the unit is  metric then this function will be pefrormed
+                           //and the data with new bmi is loaded to firestore
                 else{
                     heigh.removeLast()
                     heigh.removeLast()
                     print(heigh)
                     var hei = Double(heigh)
-                    var BMI = Double(weigh!*703/(hei!*hei!))
+                     var BMI = Double(weigh!/(hei!*hei!))
+                  //  var BMI = Double(weigh!*703/(hei!*hei!))
                     let date = Date()
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd.MM.yyyy"
                     let result = formatter.string(from: date)
                     var timestamp = String(Int64(Date().timeIntervalSince1970*1000))
                      var descriptor : String?
-                                                      //
+                                                      // descritopn acording their bmi
                                                              if BMI < 16 {
                                                                  print("less than 16")
                                                                  descriptor = "Severe Thinessss"
-                                                       //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
                                                              }
                                                              else if BMI == 16 || BMI == 17
                                                              {
                                                               descriptor = "Moderately Thin"
-                                                        //      self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              else if BMI == 17 || BMI == 18
                                                              {
                                                               
                                                                descriptor = "Mild Thiness"
-                                                       //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
@@ -163,21 +162,18 @@ class NewWeightViewController: UIViewController {
                                                              else if BMI == 18 || BMI == 25
                                                              {
                                                                    descriptor = "Normal"
-                                                       //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
                                                              else if BMI == 25 || BMI == 30
                                                              {
                                                                  descriptor = "Overweight"
-                                                           //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
                                                              else if BMI == 30 || BMI == 35
                                                              {
                                                                           descriptor = "Obese class 1"
-                                                           //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                              }
                                                              
@@ -185,7 +181,6 @@ class NewWeightViewController: UIViewController {
                                                              
                                                              {
                                                                 descriptor = " Obese class 2"
-                                                           //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"//
 
                                                               
                                                              }
@@ -194,6 +189,8 @@ class NewWeightViewController: UIViewController {
                                                                 descriptor = " Obese class 3"
                     //
                                                              }
+                    
+                    //data is loaded to firestore with new bmi
                     var db = Firestore.firestore()
                     db.collection("entry").document(timestamp).setData([
                         "date": result,

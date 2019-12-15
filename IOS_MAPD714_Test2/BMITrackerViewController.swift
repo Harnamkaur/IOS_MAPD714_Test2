@@ -5,7 +5,7 @@
                
 //  Created by Harnam kaur on 11/12/19.
 //  Copyright © 2019 Harnam kaur. All rights reserved.
-//
+// In this file all the results are fetched from the firestore and represented in table view format
 
 import UIKit
 import Firebase
