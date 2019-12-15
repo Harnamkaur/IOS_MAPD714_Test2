@@ -12,7 +12,10 @@ class cell: UITableViewCell {
     
     @IBOutlet weak var nameshow: UILabel!
     @IBOutlet weak var heightshow: UILabel!
-    @IBOutlet weak var bmishow: UILabel!
+  
+    @IBOutlet weak var bmiShow: UILabel!
+ 
     @IBOutlet weak var weightshow: UILabel!
     
+    @IBOutlet weak var descriptor: UILabel!
 }
