@@ -51,7 +51,7 @@ class BMITrackerViewController: UIViewController, UITableViewDelegate, UITableVi
               cell.weightshow.text = inde["weight"] as! String
               cell.heightshow.text = inde["date"] as! String
               cell.bmiShow.text = inde["bmi"] as? String
-            //    cell.descriptor.text = inde["Condition"] as! String
+               cell.descriptor.text = inde["Condition"] as! String
             
               
               return cell

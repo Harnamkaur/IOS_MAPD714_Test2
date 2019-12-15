@@ -200,19 +200,17 @@ class ViewController: UIViewController {
                                                                      if BMI < 16 {
                                                                          print("less than 16")
                                                                          descriptor = "Severe Thinessss"
-                                                               //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
+                                                               //
                                                                      }
                                                                      else if BMI == 16 || BMI == 17
                                                                      {
                                                                       descriptor = "Moderately Thin"
-                                                                //      self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                                      }
                                                                      else if BMI == 17 || BMI == 18
                                                                      {
                                                                       
                                                                        descriptor = "Mild Thiness"
-                                                               //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                                      }
                                                                      
@@ -220,21 +218,18 @@ class ViewController: UIViewController {
                                                                      else if BMI == 18 || BMI == 25
                                                                      {
                                                                            descriptor = "Normal"
-                                                               //       self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                                      }
                                                                      
                                                                      else if BMI == 25 || BMI == 30
                                                                      {
                                                                          descriptor = "Overweight"
-                                                                   //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                                      }
                                                                      
                                                                      else if BMI == 30 || BMI == 35
                                                                      {
                                                                                   descriptor = "Obese class 1"
-                                                                   //   self.result.text = "\(BMI)  \(String(describing: descriptor!))"
 
                                                                      }
                                                                      
@@ -242,7 +237,6 @@ class ViewController: UIViewController {
                                                                      
                                                                      {
                                                                         descriptor = " Obese class 2"
-                                                                      self.result.text = "\(BMI)  \(String(describing: descriptor!))"//
 
                                                                       
                                                                      }
